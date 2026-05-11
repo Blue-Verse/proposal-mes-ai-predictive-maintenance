@@ -122,4 +122,128 @@ job:
 
 ## 6. 최종 산출물
 
-(8단계 완료 후 추가)
+### 6.1 제안서 사이트 URL
+https://proposal-router.claude-ai-b27.workers.dev/proposal-mes-ai-predictive-maintenance/
+
+### 6.2 지원 금액
+```
+22,500,000원
+```
+
+### 6.3 지원 기간
+```
+60일
+```
+
+### 6.4 클라이언트 질문 답변
+
+**Q: 개발 포트폴리오 제시와 구축 경험 확인 및 비용 사전 협의 후 추가 진행사항 검토**
+
+A:
+1. 포트폴리오 — 본 제안서 사이트(https://proposal-router.claude-ai-b27.workers.dev/proposal-mes-ai-predictive-maintenance/) "유사 프로젝트 경험" 페이지에 본 프로젝트와 직접 연관된 3개 프로젝트(AI 모델 배포·외부 시스템 연동·실시간 알람)를 상세 정리하였습니다. 위시켓 포트폴리오 페이지(https://www.wishket.com/partners/p/blueverse1/)도 함께 참고 부탁드립니다.
+2. 구축 경험 — Python 기반 AI 모델 프로덕션 운영(FastAPI 서버), OpenAI 등 AI 모델을 외부 시스템(VICS 규제 보고, 헬스케어 대시보드)으로 연동, 실시간 데이터 수집→AI 분석→다중 채널 알람(앱/SMS/기기 제어) 구조를 수행한 경험을 보유하고 있습니다.
+3. 비용 사전 협의 — 본 제안 금액은 22,500,000원(VAT 별도)이며, 견적서 페이지에 8개 라인 아이템으로 산정 근거를 명시하였습니다. 미팅 시 PLC 환경 상세에 따라 일부 항목 조정 협의 가능합니다.
+4. 추가 진행사항 — 미팅 가능 시점/장소 알려주시면 즉시 일정 조율하겠습니다(서울/오산/부천 현장 방문 가능).
+
+### 6.5 지원 내용
+
+안녕하세요, MES 내 AI 제조 예지보전 기능 개발 프로젝트에 지원합니다.
+
+본 프로젝트에 대한 상세 제안서(견적서, 공수계산서, PRD, 일정, 포트폴리오)를 별도 페이지로 준비하였습니다. 아래 링크에서 확인해 주시면 감사하겠습니다.
+▶ 제안서 상세 페이지: https://proposal-router.claude-ai-b27.workers.dev/proposal-mes-ai-predictive-maintenance/
+▶ 위시켓 포트폴리오: https://www.wishket.com/partners/p/blueverse1/
+
+---
+
+<프로젝트 진행 제안>
+
+■ 프로젝트 분석
+- 화장품 제조공장 설비의 돌발적 생산 중단 리스크 사전 차단이 핵심 목표
+- 이기종 PLC(LS·Cimon·중국산) 환경에서 안정적 데이터 추출이 본 프로젝트 최대 난제 → 미들웨어 추상화 + 매뉴얼 부재 PLC는 패킷 캡처·역분석으로 보강
+- Spring Boot MES는 운영 중이므로 최소 변경 원칙 — MQTT 단방향 스트림 + REST API + 비동기 큐로 AI 서버 다운 대비
+- AI 모델은 단계적 고도화 — FFT 규칙 → AutoEncoder → LSTM 순으로 데이터 부족 구간부터 즉시 동작
+- 알람 채널 3종(MES 팝업·SMS·경광등) 통합 설계로 즉시 현장 대응 가능
+
+■ 작업 일정
+
+[Phase 1] Day 1–14 (2주차)
+- 현장 PLC 파악, 주소맵 검토, 아키텍처 설계, API 명세 초안
+
+[Phase 2] Day 15–28 (4주차)
+- PLC 어댑터 3종, MQTT 브로커, PostgreSQL 스키마, 진동 FFT 처리기
+
+[Phase 3] Day 29–42 (6주차)
+- FFT 규칙 모델, AutoEncoder 이상 탐지, LSTM 시계열 예측, 위험도 판정 로직
+
+[Phase 4] Day 43–53 (7~8주차)
+- FastAPI AI 서버, Spring Boot MES REST API 연동, Grafana 대시보드, 알람 시스템
+
+[Phase 5] Day 54–60 (8주차)
+- 통합 테스트, 현장 검증(오산·부천), 운영 매뉴얼·문서 최종화, 납품
+
+■ 마일스톤 및 산출물
+- M0(Day 14): 설계 문서·API 명세 초안 승인
+- M1(Day 28): 3종 PLC 데이터 정상 수집·DB 적재·FFT 처리 검증
+- M2(Day 42): AI 모델 평가 완료, 위험도 판정 시연
+- M3(Day 53): E2E 통합 — PLC→AI→MES 팝업/SMS/경광등 전 채널 알람 시연
+- M4(Day 60): 최종 납품 — 소스 코드(AI 학습 코드 포함), 데이터 파이프라인·API 연동 문서, 설치·운영 매뉴얼
+
+■ 미팅 시 협의 필요 사항
+1. 중국산 PLC 모델명·통신 프로토콜 확인 (현장 방문 전 사전 검증 필요)
+2. 기존 MES API 연동 규격서 및 파악된 PLC 주소맵 공유 시점
+3. 정부지원사업 선정 일정에 따른 착수일 변동 가능성
+4. SMS 게이트웨이·경광등 인터페이스 보유 여부 및 사양
+5. AI 학습용 정상 데이터 보유 현황 (없을 경우 Phase 2 중 수집 기간 확보)
+6. 현장 방문 일정 (Phase 1·2·5 각 1회 이상)
+
+---
+
+<유사 프로젝트 진행 경험>
+
+▶ AI Agent — AI-Native 개발 프레임워크 (2025~)
+- 프로젝트 유형: AI/자동화 / 멀티 에이전트 오케스트레이션
+- 핵심 기능: 멀티 모델 통합, 134+ 스킬 모듈, MCP 외부 시스템 연동, 페르소나 기반 자동화
+- 유사점: Python/TypeScript 기반 AI 시스템 프로덕션 운영 경험 — FastAPI AI 서버 구축, 모델 배포·모니터링·재학습 파이프라인을 그대로 적용 가능
+- 기술 스택: TypeScript, Python, Claude Agent SDK, MCP, Hono, PostgreSQL
+
+▶ VC 펀드 관리 플랫폼 (2023.11~2024.12, 14개월)
+- 프로젝트 유형: 핀테크 / AI 통합 / 대규모 백엔드
+- 핵심 기능: OpenAI 연동 AI 투자 보고서, VICS 규제 5종 양식 연동, 200~300+ API 엔드포인트, 실시간 협업
+- 유사점: AI 모델을 외부 시스템에 통합·송수신한 직접 경험 — FastAPI ↔ Spring Boot MES 연동 패턴과 구조적 동일. AI 서버 다운 대비 재시도·큐잉 패턴 동일하게 적용
+- 기술 스택: NestJS, Next.js, OpenAI API, MySQL, AWS, CRDT/Yjs
+
+▶ Harmony Link — 시니어 케어 관리 플랫폼 (2025, 6개월)
+- 프로젝트 유형: B2B SaaS / 실시간 모니터링 / AI 분석
+- 핵심 기능: 실시간 데이터 수집, AI 건강 분석(OpenAI), 임계치 알람, 다중 채널 알림, 멀티테넌트
+- 유사점: 실시간 데이터→DB 적재→AI 분석→위험도 판정→다중 채널 알람의 전체 플로우가 본 프로젝트(PLC→PostgreSQL→AI→MES 팝업/SMS/경광등)와 거의 동일
+- 기술 스택: NestJS, Next.js, Flutter, OpenAI, MySQL, AWS CDK
+
+---
+
+<사용 기술과 툴>
+
+▶ 개발 기술
+- AI/Backend: Python, FastAPI, TensorFlow/PyTorch, SciPy, scikit-learn
+- 데이터 파이프라인: MQTT(Mosquitto/EMQX), PostgreSQL(TimescaleDB 선택), Redis
+- PLC 통신: Modbus TCP, OPC-UA, LSIS Protocol, 자체 어댑터 미들웨어
+- 기존 시스템 연계: Java Spring Boot REST API 연동
+- Dashboard: Grafana
+
+▶ 개발 도구 및 인프라
+- 버전 관리: GitHub
+- CI/CD: GitHub Actions
+- 컨테이너: Docker
+- 배포 환경: 클라이언트 측 온프레미스/클라우드 기준
+
+▶ 커뮤니케이션
+- 일일 진행 공유: Slack 또는 카카오톡
+- 주간 미팅: Zoom / Google Meet
+- 현장 방문: 오산·부천 등 1시간 30분 이내 권역 직접 방문
+- 문서 공유: Notion 또는 Google Docs
+- 이슈 트래킹: GitHub Issues
+
+### 6.6 관련 포트폴리오 추천 (위시켓 폼)
+1. AI Agent — Python 기반 AI 시스템 배포·운영 경험 (FastAPI AI 서버 구축 참조)
+2. Series-B (VC 펀드 관리 플랫폼) — OpenAI 통합 + 외부 시스템 연동 패턴 (Spring Boot MES 연동과 구조적으로 동일)
+3. Harmony Link — 실시간 데이터 + AI 분석 + 다중 채널 알람 (본 프로젝트 알람 시스템과 가장 유사)
+
